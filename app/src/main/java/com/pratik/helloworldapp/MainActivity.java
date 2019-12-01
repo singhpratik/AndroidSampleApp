@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,7 +17,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void sendMessage(View view){
-        Intent intent = new Intent(this, MessageActivity.class);
-        startActivity(intent);
+        EditText userTextField = findViewById(R.id.user_message);
+        String userMessage = userTextField.getText().toString();
+        Intent messageActivityIntent = new Intent(this, MessageActivity.class);
+        messageActivityIntent.putExtra("displayMessage",userMessage);
+        startActivity(messageActivityIntent);
     }
 }
